@@ -1,5 +1,8 @@
 # skeleton-grpc
 
+## gen proto 
+
+protoc -I internal/protos proto/price_service.proto --go_out=./internal/protos/gen --go-grpc_out=./internal/protos/gen/
 
 
 ## Getting started
