@@ -1,9 +1,13 @@
 # skeleton-grpc
 
 ## gen proto 
-
+``
 protoc -I internal/protos proto/price_service.proto --go_out=./internal/protos/gen --go-grpc_out=./internal/protos/gen/
-
+``
+## run service 
+``
+go run ./cmd/main.go --config .\config\config.yaml
+``
 
 ## Getting started
 
