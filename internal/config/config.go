@@ -8,10 +8,16 @@ import (
 )
 
 type Config struct {
-	env       string    `yaml:"env" default:"dev"`
-	appName   string    `yaml:"appName"`
+	Env       string    `yaml:"env" default:"dev"`
+	AppName   string    `yaml:"appName"`
 	Postgres  Storage   `yaml:"postgres"`
 	Tarantool Tarantool `yaml:"tarantool"`
+	Grpc      grpc      `yaml:"grpc"`
+}
+
+type grpc struct {
+	Port string `yaml:"port"`
+	Host string `yaml:"host"`
 }
 
 type Storage struct {
@@ -64,10 +70,10 @@ func fetchConfigPath() string {
 	return res
 }
 
-func SetupLoger(env Config) *slog.Logger {
+func SetupLoger(env *Config) *slog.Logger {
 	var log *slog.Logger
 
-	switch env.env {
+	switch env.Env {
 	case "dev":
 		log = slog.New(
 			slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}),

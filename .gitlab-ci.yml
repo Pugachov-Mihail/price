@@ -27,7 +27,7 @@ build_job:
   image: docker:latest
   services:
     - name: docker:dind
-      command: ["dockerd", "--host=tcp://0.0.0.0:2375", "--host=unix:///var/run/docker.sock", "--insecure-registry=192.168.50.11:4567"]
+      command: ["dockerd", "--host=tcp://0.0.0.0:2375", "--host=unix:///var/run/docker.sock", "--insecure-registry=192.168.1.11:4567"]
   tags:
     - docker
   <<: *docker_login_template
